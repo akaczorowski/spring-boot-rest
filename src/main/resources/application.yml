@@ -1,0 +1,34 @@
+info:
+  app:
+    name: Example REST API
+    description: example
+    version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [prometheus, health, info, metrics]
+  endpoint:
+    prometheus:
+      enabled: true
+  info:
+    git:
+      enabled: true
+      mode: full
+  metrics:
+    web:
+      server:
+        auto-time-requests: true
+
+spring:
+  jpa:
+    database-platform:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name:
