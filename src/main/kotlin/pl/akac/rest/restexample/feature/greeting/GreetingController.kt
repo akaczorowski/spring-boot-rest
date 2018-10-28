@@ -1,16 +1,16 @@
 package pl.akac.rest.restexample.feature.greeting
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RequestMapping
+import org.slf4j.LoggerFactory
+import org.springframework.web.bind.annotation.*
 import java.util.concurrent.atomic.AtomicLong
-import org.springframework.web.bind.annotation.RestController
 import pl.akac.rest.restexample.feature.greeting.model.Greeting
 
 
 @RestController
 @RequestMapping("/greeting")
 class GreetingController {
+
+    val logger = LoggerFactory.getLogger(GreetingController::class.java)
 
     companion object {
 
@@ -23,5 +23,12 @@ class GreetingController {
     fun greeting(@RequestParam(value = "name", defaultValue = "World") name: String): Greeting {
         return Greeting(counter.incrementAndGet(),
                 String.format(template, name))
+    }
+
+    @PostMapping("/message")
+    fun message(@RequestBody msg: String){
+
+        logger.info(msg)
+        logger.trace(msg)
     }
 }

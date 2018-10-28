@@ -1,3 +1,5 @@
+# you can change this to application.properties
+
 info:
   app:
     name: Example REST API
@@ -32,3 +34,9 @@ spring:
     username:
     password:
     driver-class-name:
+logging:
+  level:
+    root: info
+    pl.akac: trace
+#    org.springframework.web: warn
+#    org.hibernate: error
